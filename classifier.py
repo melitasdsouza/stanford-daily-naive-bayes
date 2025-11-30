@@ -213,20 +213,6 @@ STOPWORDS = {
     "from", "s", "t", "it", "as"
 }
 
-def confusion_matrix(preds, labels):
-    tp_news = fn_news = tp_op = fn_op = 0
-    for p, t in zip(preds, labels):
-        if t == "News" and p == "News":
-            tp_news += 1
-        elif t == "News" and p == "Opinion":
-            fn_news += 1
-        elif t == "Opinion" and p == "Opinion":
-            tp_op += 1
-        elif t == "Opinion" and p == "News":
-            fn_op += 1
-    return [[tp_news, fn_news], [fn_op, tp_op]]
-
-
 def top_distinct_words(main_counter, other_counter, k=10):
     result = []
     for w, c in main_counter.most_common():
@@ -261,13 +247,6 @@ def main():
     print("\n=== RESULTS ===")
     print(f"Accuracy: {accuracy:.3f}")
 
-    # Confusion matrix
-    cm = confusion_matrix(preds, true_labels)
-    print("\nConfusion matrix (rows = actual, columns = predicted):")
-    print("[[News→News, News→Opinion],")
-    print(" [Opinion→News, Opinion→Opinion]]")
-    print(cm)
-
     # Distinctive words
     top_news = top_distinct_words(clf.news_counts, clf.op_counts)
     top_op = top_distinct_words(clf.op_counts, clf.news_counts)
@@ -279,9 +258,6 @@ def main():
     print("\nTop distinctive Opinion words:")
     for w, c in top_op:
         print(f"  {w} ({c})")
-
-    print("\nDone.\n")
-
 
 if __name__ == "__main__":
     main()
