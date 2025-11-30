@@ -12,8 +12,5 @@ The project shows that even a 109-level probabilistic model can detect stylistic
 .
 ├── code/
 │   └── classifier.py        # Naive Bayes classifier
-├── report/
-│   ├── Challenge.pdf        # Final written submission
-└── figures/
-    ├── top_news_words.png
-    └── top_opinion_words.png
+└── report/
+    └── Challenge.pdf        # Final written submission
