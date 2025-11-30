@@ -5,7 +5,6 @@ Naive Bayes classifier for Stanford Daily headlines (News vs Opinion)
 
 - Uses 40 News + 40 Opinion headlines for training
 - Tests on 10 News + 10 Opinion held-out headlines
-- Prints accuracy, confusion matrix, and distinctive word analysis
 """
 
 import re
